@@ -1,0 +1,32 @@
+﻿@model IEnumerable<ProductViewModel>
+@{
+    ViewData["Title"] = "Product List";
+    var products = Model.ToList();
+}
+
+<div class="container">
+    <div class="row text-center">
+        <h2>All Products</h2>
+    </div>
+
+    <hr />
+
+    <div class="row">
+        <a href="#" class="btn btn-primary">Add Product</a>
+    </div>
+
+    <br/>
+
+    <div class="row">
+        @for (int i = 0; i < Model.Count(); i++)
+        {
+            <div class="card w-50 col-6">
+                <div class="card-body">
+                    <h5 class="card-title">@products[i].Name</h5>
+                    <a href="#" class="btn btn-warning">Edit</a>
+                    <a href="#" class="btn btn-danger">Delete</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
