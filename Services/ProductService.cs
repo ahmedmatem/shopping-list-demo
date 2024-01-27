@@ -23,10 +23,11 @@ namespace ShoppingList.Services
 
         public async Task DeleteAsync(int id)
         {
-            var product = await context.FindAsync<Product>(id);
-            if (product != null)
+            var entity = await context.FindAsync<Product>(id);
+            if (entity != null)
             {
-                context.Remove(product);
+                context.Remove(entity);
+                await context.SaveChangesAsync();
             }
         }
 

@@ -24,8 +24,7 @@
                 <div class="card-body">
                     <h5 class="card-title">@products[i].Name</h5>
                     <a asp-action="Edit" asp-route-id="@products[i].Id" class="btn btn-warning d-block">Edit</a>
-                    <form asp-action="DeleteProduct" method="post" class="mt-3">
-                        <input type="hidden" asp-route-id="@products[i].Id" />
+                    <form asp-action="Delete" method="post" asp-route-id="@products[i].Id" class="mt-3">
                         <input type="submit" class="btn btn-danger form-control" value="Delete" />
                     </form>
                 </div>

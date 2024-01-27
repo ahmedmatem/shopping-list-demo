@@ -58,10 +58,11 @@ namespace ShoppingList.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        //[HttpPost]
-        //public Task<IActionResult> DeleteProduct(int id)
-        //{
-        //    throw new NotImplementedException();
-        //}
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id)
+        {
+            await productService.DeleteAsync(id);
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
