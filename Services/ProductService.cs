@@ -7,26 +7,30 @@ namespace ShoppingList.Services
 {
     public class ProductService : IProductService
     {
-        private readonly ShoppingListDbContext _context;
+        private readonly ShoppingListDbContext context;
 
         public ProductService(ShoppingListDbContext context)
         {
-            _context = context;
+            this.context = context;
         }
 
-        async public Task AddAsync(ProductViewModel model)
+        public async Task AddAsync(ProductViewModel model)
         {
             throw new NotImplementedException();
         }
 
-        async public Task DeleteAsync(int id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            var product = await context.FindAsync<Product>(id);
+            if (product != null)
+            {
+                context.Remove(product);
+            }
         }
 
-        async public Task<IEnumerable<ProductViewModel>> GetAllAsync()
+        public async Task<IEnumerable<ProductViewModel>> GetAllAsync()
         {
-            return await _context.Products
+            return await context.Products
                 .AsNoTracking()
                 .Select(x => new ProductViewModel
                 {
@@ -36,12 +40,16 @@ namespace ShoppingList.Services
                 .ToListAsync();
         }
 
-        async public Task<ProductViewModel> GetByIdAsync(int id)
+        public async Task<ProductViewModel> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var entity = await context.Products.FindAsync(id);
+
+            return entity == null
+                ? throw new ArgumentException("Invalid product.")
+                : new ProductViewModel { Id = entity.Id, Name = entity.Name };
         }
 
-        async public Task UpdateAsync(ProductViewModel model)
+        public async Task UpdateAsync(ProductViewModel model)
         {
             throw new NotImplementedException();
         }

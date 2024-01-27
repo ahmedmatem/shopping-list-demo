@@ -66,3 +66,4 @@ F:\SoftUni\Exercises\ShoppingList\obj\Debug\net6.0\refint\ShoppingList.dll
 F:\SoftUni\Exercises\ShoppingList\obj\Debug\net6.0\ShoppingList.pdb
 F:\SoftUni\Exercises\ShoppingList\obj\Debug\net6.0\ShoppingList.genruntimeconfig.cache
 F:\SoftUni\Exercises\ShoppingList\obj\Debug\net6.0\ref\ShoppingList.dll
+F:\SoftUni\Exercises\ShoppingList\obj\Debug\net6.0\ShoppingList.sourcelink.json
