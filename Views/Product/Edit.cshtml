@@ -1,0 +1,26 @@
+﻿@model ProductViewModel
+@{
+    ViewData["Title"] = "Edit product";
+}
+
+<div class="container">
+    <div class="row text-center">
+        <h2>@ViewData["Title"]</h2>
+    </div>
+
+    <hr />
+
+    <form asp-action="Edit" method="post">
+        <div class="form-group">
+            <label asp-for="Name"></label>
+            <input asp-for="Name" type="text" class="form-control">
+            <span asp-validation-for="Name" class="small text-danger"></span>
+        </div>
+        <input class="btn btn-primary mt-3" type="submit" value="Update" />
+    </form>
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -53,7 +53,16 @@ namespace ShoppingList.Services
 
         public async Task UpdateAsync(ProductViewModel model)
         {
-            throw new NotImplementedException();
+            var entity = await context.Products.FindAsync(model.Id);
+
+            if(entity == null)
+            {
+                throw new ArgumentException("Invalid product");
+            }
+
+            entity.Name = model.Name;   
+            context.Update(entity);
+            await context.SaveChangesAsync();
         }
     }
 }

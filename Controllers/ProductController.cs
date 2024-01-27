@@ -38,6 +38,26 @@ namespace ShoppingList.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Edit(int id)
+        {
+            var model = await productService.GetByIdAsync(id);
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(ProductViewModel model)
+        {
+            if(!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            await productService.UpdateAsync(model);
+
+            return RedirectToAction(nameof(Index));
+        }
+
         //[HttpPost]
         //public Task<IActionResult> DeleteProduct(int id)
         //{
