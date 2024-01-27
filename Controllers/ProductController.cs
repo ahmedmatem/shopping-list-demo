@@ -25,6 +25,19 @@ namespace ShoppingList.Controllers
             return View(new ProductViewModel());
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Add(ProductViewModel model)
+        {
+            if(!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            await productService.AddAsync(model);
+
+            return RedirectToAction(nameof(Index));
+        }
+
         //[HttpPost]
         //public Task<IActionResult> DeleteProduct(int id)
         //{

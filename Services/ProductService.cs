@@ -16,7 +16,9 @@ namespace ShoppingList.Services
 
         public async Task AddAsync(ProductViewModel model)
         {
-            throw new NotImplementedException();
+            Product product = new Product { Name = model.Name };
+            await context.Products.AddAsync(product);
+            await context.SaveChangesAsync();
         }
 
         public async Task DeleteAsync(int id)
